@@ -41,13 +41,22 @@ export default function PetDetails() {
         <div className="petdetails__right">
           <div className="petdetails__actions">
             <button className="petdetails__icon-btn">
-              <img src="/icons/call.svg" alt="call" />
+              <img
+                src={import.meta.env.BASE_URL + "icons/call.svg"}
+                alt="call"
+              />
             </button>
             <button className="petdetails__icon-btn">
-              <img src="/icons/star.svg" alt="favorite" />
+              <img
+                src={import.meta.env.BASE_URL + "icons/star.svg"}
+                alt="favorite"
+              />
             </button>
             <button className="petdetails__icon-btn">
-              <img src="/icons/share.svg" alt="share" />
+              <img
+                src={import.meta.env.BASE_URL + "icons/share.svg"}
+                alt="share"
+              />
             </button>
           </div>
 

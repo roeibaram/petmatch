@@ -7,7 +7,7 @@ const mockPets = [
     breed: "Corgi",
     location: "Brooklyn, NY",
     type: "dog",
-    img: "/corgi.jpg",
+    img: import.meta.env.BASE_URL + "corgi.jpg",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const mockPets = [
     breed: "German Shepherd",
     location: "Brooklyn, NY",
     type: "dog",
-    img: "/german-shepherd.jpg",
+    img: import.meta.env.BASE_URL + "german-shepherd.jpg",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const mockPets = [
     breed: "Pit Bull",
     location: "Manhattan, NY",
     type: "dog",
-    img: "/pitbull.jpg",
+    img: import.meta.env.BASE_URL + "pitbull.jpg",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const mockPets = [
     breed: "Domestic Short Hair",
     location: "Brooklyn, NY",
     type: "cat",
-    img: "/domestic-shorthair.jpg",
+    img: import.meta.env.BASE_URL + "domestic-shorthair.jpg",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const mockPets = [
     breed: "Tabby",
     location: "Queens, NY",
     type: "cat",
-    img: "/tabby.jpg",
+    img: import.meta.env.BASE_URL + "tabby.jpg",
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ const mockPets = [
     breed: "Persian",
     location: "Bronx, NY",
     type: "cat",
-    img: "/persian.jpg",
+    img: import.meta.env.BASE_URL + "persian.jpg",
   },
   {
     id: 7,
@@ -67,7 +67,7 @@ const mockPets = [
     breed: "Parakeet",
     location: "Queens, NY",
     type: "bird",
-    img: "/parakeet.jpg",
+    img: import.meta.env.BASE_URL + "parakeet.jpg",
   },
   {
     id: 8,
@@ -77,7 +77,7 @@ const mockPets = [
     breed: "Cockatiel",
     location: "Brooklyn, NY",
     type: "bird",
-    img: "/cockatiel.jpg",
+    img: import.meta.env.BASE_URL + "cockatiel.jpg",
   },
   {
     id: 9,
@@ -87,7 +87,7 @@ const mockPets = [
     breed: "Lovebird",
     location: "Manhattan, NY",
     type: "bird",
-    img: "/lovebird.jpg",
+    img: import.meta.env.BASE_URL + "lovebird.jpg",
   },
 ];
 
