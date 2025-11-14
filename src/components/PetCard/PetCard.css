@@ -1,0 +1,51 @@
+.pet-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  position: relative;
+}
+
+.pet-card__save {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+}
+
+.pet-card__save-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.pet-card__img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.pet-card__name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.pet-card__info {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 2px;
+}
+
+.pet-card__location {
+  font-size: 14px;
+  color: #666;
+}
