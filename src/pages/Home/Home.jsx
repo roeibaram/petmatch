@@ -51,13 +51,13 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="home">
+      <main className="home">
         <div className="home__container">
           <h1 className="home__title">Find Your New Best Friend</h1>
 
           <SearchBar onSearch={handleSearch} />
 
-          <div className="home__filters">
+          <section className="home__filters">
             <div className="home__filter-group">
               <p className="home__filter-title">Type</p>
               <div className="home__buttons">
@@ -153,7 +153,7 @@ export default function Home() {
                 ))}
               </select>
             </div>
-          </div>
+          </section>
 
           <h2 className="home__matches-title">Here Are Your Matches 🐾</h2>
 
@@ -175,7 +175,7 @@ export default function Home() {
             </>
           )}
         </div>
-      </div>
+      </main>
     </>
   );
 }

@@ -6,17 +6,17 @@ export default function PetDetails() {
   const { id } = useParams();
   const pet = mockPets.find((p) => p.id === Number(id));
 
-  if (!pet) return <div className="petdetails">Pet not found.</div>;
+  if (!pet) return <main className="petdetails">Pet not found.</main>;
 
   return (
-    <div className="petdetails">
-      <div className="petdetails__header">{pet.name} 🐶</div>
+    <main className="petdetails">
+      <h1 className="petdetails__header">{pet.name} 🐶</h1>
 
-      <div className="petdetails__subheader">
+      <p className="petdetails__subheader">
         {pet.location} • Aged {pet.ageYears} • {pet.breed} • {pet.type}
-      </div>
+      </p>
 
-      <div className="petdetails__layout">
+      <section className="petdetails__layout">
         <div className="petdetails__left">
           <img src={pet.img} alt={pet.name} className="petdetails__image" />
 
@@ -38,24 +38,24 @@ export default function PetDetails() {
           <p className="petdetails__text">{pet.breed}</p>
         </div>
 
-        <div className="petdetails__right">
+        <aside className="petdetails__right">
           <div className="petdetails__actions">
             <button className="petdetails__icon-btn">
               <img
                 src={import.meta.env.BASE_URL + "icons/call.svg"}
-                alt="call"
+                alt="call icon"
               />
             </button>
             <button className="petdetails__icon-btn">
               <img
                 src={import.meta.env.BASE_URL + "icons/star.svg"}
-                alt="favorite"
+                alt="favorite icon"
               />
             </button>
             <button className="petdetails__icon-btn">
               <img
                 src={import.meta.env.BASE_URL + "icons/share.svg"}
-                alt="share"
+                alt="share icon"
               />
             </button>
           </div>
@@ -79,8 +79,8 @@ export default function PetDetails() {
             <li>Vaccinated</li>
             <li>Microchipped</li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </aside>
+      </section>
+    </main>
   );
 }

@@ -1,16 +1,29 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 export default function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <h1 className="header__logo">PetMatch</h1>
+        <p className="header__logo">
+          <Link to="/" className="header__logo-link">
+            PetMatch
+          </Link>
+        </p>
 
         <nav className="header__nav">
-          <button className="header__btn">Saved Pets</button>
-          <button className="header__btn">Find Pets</button>
-          <button className="header__btn header__btn--outline">Sign In</button>
-          <button className="header__btn header__btn--solid">Sign Up</button>
+          <Link to="/saved-pets" className="header__btn">
+            Saved Pets
+          </Link>
+          <Link to="/" className="header__btn">
+            Find Pets
+          </Link>
+          <Link to="/signin" className="header__btn header__btn--outline">
+            Sign In
+          </Link>
+          <Link to="/signup" className="header__btn header__btn--solid">
+            Sign Up
+          </Link>
         </nav>
       </div>
     </header>

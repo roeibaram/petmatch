@@ -3,6 +3,8 @@
   border-radius: 12px;
   padding: 12px;
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .pet-card__save {
@@ -29,6 +31,7 @@
   width: 100%;
   border-radius: 10px;
   margin-bottom: 8px;
+  object-fit: cover;
 }
 
 .pet-card__name {
