@@ -1,0 +1,14 @@
+.savedpets {
+  background: #f2994a;
+  min-height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.savedpets__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 60px;
+}

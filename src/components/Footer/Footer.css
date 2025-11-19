@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  padding: 24px 20px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  border-top: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+.footer__text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.footer__year-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer__year {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+.footer__paw {
+  width: 22px;
+  height: 22px;
+}

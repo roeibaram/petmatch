@@ -1,0 +1,48 @@
+.preloader {
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-preloader {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #444;
+  border-bottom-color: #888;
+  border-radius: 50%;
+  position: relative;
+  animation: spin 0.75s infinite linear, pulse 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    border-color: #6c63ff;
+    border-bottom-color: #b7a4ff;
+  }
+  50% {
+    border-color: #b58aff;
+    border-bottom-color: #d7caff;
+  }
+  100% {
+    border-color: #6c63ff;
+    border-bottom-color: #b7a4ff;
+  }
+}
+
+.preloader__text {
+  margin-top: 16px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}

@@ -1,0 +1,137 @@
+.home {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffa04f;
+  padding: 80px 20px;
+  box-sizing: border-box;
+}
+
+.home__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+}
+
+.home__title {
+  font-size: clamp(32px, 6vw, 60px);
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.home__status {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.home__filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 1140px;
+  margin: 40px auto;
+  color: #fff;
+}
+
+.home__filter-group {
+  text-align: center;
+}
+
+.home__filter-title {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.home__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.home__button {
+  border: 1px solid #fff;
+  border-radius: 20px;
+  background: transparent;
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.home__button--active {
+  background: #fff;
+  color: #ff8a3d;
+}
+
+.home__age-range {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.home__select {
+  padding: 6px 10px;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+}
+
+.home__select option {
+  color: #222;
+}
+
+.home__age-dash {
+  font-size: 14px;
+}
+
+.home__matches-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 40px 0 24px;
+}
+
+.home__no-results {
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.home__view-more {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 10px 24px;
+  border-radius: 24px;
+  background: #6b2fd6;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.home__status {
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+}
+
+@media (min-width: 600px) {
+  .home__filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .home__filters {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
