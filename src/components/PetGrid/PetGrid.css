@@ -1,0 +1,36 @@
+.pet-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 600px) {
+  .pet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .pet-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@keyframes cardBounce {
+  0% {
+    scale: 0.6;
+  }
+  60% {
+    scale: 1.05;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.pet-card {
+  animation: cardBounce 0.6s ease-out;
+}
