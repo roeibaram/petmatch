@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-export default function Header() {
+export default function Header({ savedPetCount = 0 }) {
   return (
     <header className="header">
       <div className="header__container">
@@ -12,8 +12,13 @@ export default function Header() {
         </p>
 
         <nav className="header__nav">
-          <Link to="/saved-pets" className="header__btn">
-            Saved Pets
+          <Link to="/saved-pets" className="header__btn header__btn--saved">
+            <span>Saved Pets</span>
+            {savedPetCount > 0 ? (
+              <span className="header__badge" aria-label={`${savedPetCount} saved pets`}>
+                {savedPetCount}
+              </span>
+            ) : null}
           </Link>
           <Link to="/" className="header__btn">
             Find Pets

@@ -51,7 +51,7 @@ export default function App() {
 
   return (
     <>
-      <Header />
+      <Header savedPetCount={savedPetIds.length} />
 
       <Routes>
         <Route
