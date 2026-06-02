@@ -5,7 +5,7 @@ import shareIcon from "/icons/share.svg";
 import Preloader from "../../components/Preloader/Preloader";
 import "./PetDetails.css";
 
-export default function PetDetails({ dogs, loading, error }) {
+export default function PetDetails({ dogs, loading, error, savedPetIds, onToggleSavedPet }) {
   const { id } = useParams();
 
   if (loading)
@@ -30,6 +30,8 @@ export default function PetDetails({ dogs, loading, error }) {
         <p className="petdetails__notfound">Pet not found.</p>
       </main>
     );
+
+  const isSaved = savedPetIds.includes(String(pet.id));
 
   return (
     <main className="petdetails">
@@ -64,8 +66,14 @@ export default function PetDetails({ dogs, loading, error }) {
               <img src={callIcon} alt="call" />
             </button>
 
-            <button className="petdetails__icon-btn">
-              <img src={starIcon} alt="save" />
+            <button
+              className={`petdetails__icon-btn ${isSaved ? "petdetails__icon-btn--active" : ""}`}
+              type="button"
+              aria-label={isSaved ? `Remove ${pet.name} from saved pets` : `Save ${pet.name}`}
+              aria-pressed={isSaved}
+              onClick={() => onToggleSavedPet(pet)}
+            >
+              <img src={starIcon} alt="" />
             </button>
 
             <button className="petdetails__icon-btn">

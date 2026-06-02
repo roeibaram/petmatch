@@ -2,11 +2,17 @@ import { Link } from "react-router-dom";
 const paw = "/petmatch/icons/paw.svg";
 import "./PetCard.css";
 
-export default function PetCard({ pet }) {
+export default function PetCard({ pet, isSaved = false, onToggleSaved }) {
   return (
     <div className="pet-card">
-      <button className="pet-card__save">
-        <img src={paw} alt="paw icon" className="pet-card__save-icon" />
+      <button
+        className={`pet-card__save ${isSaved ? "pet-card__save--active" : ""}`}
+        type="button"
+        aria-label={isSaved ? `Remove ${pet.name} from saved pets` : `Save ${pet.name}`}
+        aria-pressed={isSaved}
+        onClick={() => onToggleSaved?.(pet)}
+      >
+        <img src={paw} alt="" className="pet-card__save-icon" />
       </button>
 
       <Link to={`/pets/${pet.id}`} className="pet-card__link">

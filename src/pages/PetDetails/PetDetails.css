@@ -74,6 +74,10 @@
   height: 20px;
 }
 
+.petdetails__icon-btn--active {
+  background: #2f266f;
+}
+
 .petdetails__section-title {
   font-size: 22px;
   font-weight: 700;

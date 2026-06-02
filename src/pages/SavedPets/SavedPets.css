@@ -2,13 +2,32 @@
   background: #f2994a;
   min-height: 100vh;
   padding: 40px 20px;
-  text-align: center;
   font-family: "Inter", sans-serif;
 }
 
+.savedpets__container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
 .savedpets__title {
-  font-size: 32px;
+  font-size: clamp(32px, 6vw, 52px);
   font-weight: 700;
   color: #fff;
-  margin-top: 60px;
+  margin: 40px 0 12px;
+}
+
+.savedpets__copy,
+.savedpets__empty {
+  max-width: 620px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0 0 28px;
+}
+
+.savedpets__empty {
+  padding: 24px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.18);
 }

@@ -4,7 +4,7 @@ import PetGrid from "../../components/PetGrid/PetGrid";
 import Preloader from "../../components/Preloader/Preloader";
 import "./Home.css";
 
-export default function Home({ dogs, loading, error }) {
+export default function Home({ dogs, loading, error, savedPetIds, onToggleSavedPet }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredDogs, setFilteredDogs] = useState([]);
   const [visibleCount, setVisibleCount] = useState(3);
@@ -43,7 +43,11 @@ export default function Home({ dogs, loading, error }) {
                 <p className="home__no-results">No dogs found.</p>
               ) : (
                 <>
-                  <PetGrid pets={visiblePets} />
+                  <PetGrid
+                    pets={visiblePets}
+                    savedPetIds={savedPetIds}
+                    onToggleSavedPet={onToggleSavedPet}
+                  />
 
                   {canViewMore && (
                     <button
