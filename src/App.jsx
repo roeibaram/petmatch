@@ -49,6 +49,10 @@ export default function App() {
     });
   }
 
+  function handleClearSavedPets() {
+    setSavedPetIds([]);
+  }
+
   return (
     <>
       <Header savedPetCount={savedPetIds.length} />
@@ -87,6 +91,7 @@ export default function App() {
               pets={savedPets}
               savedPetIds={savedPetIds}
               onToggleSavedPet={handleToggleSavedPet}
+              onClearSavedPets={handleClearSavedPets}
             />
           }
         />
