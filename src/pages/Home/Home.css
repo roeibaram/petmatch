@@ -95,7 +95,14 @@
 .home__matches-title {
   font-size: 32px;
   font-weight: 600;
-  margin: 40px 0 24px;
+  margin: 40px 0 10px;
+}
+
+.home__results-summary {
+  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .home__no-results {

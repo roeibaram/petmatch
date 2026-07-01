@@ -15,7 +15,7 @@ export default function SearchBar({ onSearch }) {
     <form className="search" onSubmit={handleSubmit}>
       <input
         className="search__input"
-        placeholder="Search by breed (e.g., Husky)"
+        placeholder="Search breed, name, or city"
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />

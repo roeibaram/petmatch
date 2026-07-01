@@ -4,15 +4,23 @@ import PetGrid from "../../components/PetGrid/PetGrid";
 import Preloader from "../../components/Preloader/Preloader";
 import "./Home.css";
 
+function doesPetMatchSearch(dog, searchTerm) {
+  if (!searchTerm) {
+    return true;
+  }
+
+  return [dog.name, dog.breed, dog.location].some((field) =>
+    field.toLowerCase().includes(searchTerm)
+  );
+}
+
 export default function Home({ dogs, loading, error, savedPetIds, onToggleSavedPet }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredDogs, setFilteredDogs] = useState([]);
   const [visibleCount, setVisibleCount] = useState(3);
 
   useEffect(() => {
-    const results = dogs.filter((dog) =>
-      dog.breed.toLowerCase().includes(searchTerm)
-    );
+    const results = dogs.filter((dog) => doesPetMatchSearch(dog, searchTerm));
     setFilteredDogs(results);
   }, [searchTerm, dogs]);
 
@@ -23,6 +31,9 @@ export default function Home({ dogs, loading, error, savedPetIds, onToggleSavedP
 
   const visiblePets = filteredDogs.slice(0, visibleCount);
   const canViewMore = visibleCount < filteredDogs.length;
+  const resultSummary = searchTerm
+    ? `${filteredDogs.length} match${filteredDogs.length === 1 ? "" : "es"} for "${searchTerm}"`
+    : `${filteredDogs.length} pets ready to meet you`;
 
   return (
     <>
@@ -38,9 +49,10 @@ export default function Home({ dogs, loading, error, savedPetIds, onToggleSavedP
           {!loading && !error && (
             <>
               <h2 className="home__matches-title">Here Are Your Matches 🐾</h2>
+              <p className="home__results-summary">{resultSummary}</p>
 
               {filteredDogs.length === 0 ? (
-                <p className="home__no-results">No dogs found.</p>
+                <p className="home__no-results">No dogs found. Try searching by name, breed, or city.</p>
               ) : (
                 <>
                   <PetGrid
