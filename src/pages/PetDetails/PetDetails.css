@@ -54,7 +54,7 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 40px;
+  margin-bottom: 18px;
 }
 
 .petdetails__icon-btn {
@@ -76,6 +76,25 @@
 
 .petdetails__icon-btn--active {
   background: #2f266f;
+}
+
+.petdetails__icon-btn--notice {
+  background: #2f266f;
+}
+
+.petdetails__share-feedback {
+  margin: 0 0 28px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f4f2ff;
+  color: #2f266f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.petdetails__share-feedback--failed {
+  background: #fff1ed;
+  color: #a43b20;
 }
 
 .petdetails__section-title {

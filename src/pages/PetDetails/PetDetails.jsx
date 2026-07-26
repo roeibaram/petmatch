@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import callIcon from "/icons/call.svg";
 import starIcon from "/icons/star.svg";
@@ -7,6 +8,7 @@ import "./PetDetails.css";
 
 export default function PetDetails({ dogs, loading, error, savedPetIds, onToggleSavedPet }) {
   const { id } = useParams();
+  const [shareStatus, setShareStatus] = useState("idle");
 
   if (loading)
     return (
@@ -32,6 +34,42 @@ export default function PetDetails({ dogs, loading, error, savedPetIds, onToggle
     );
 
   const isSaved = savedPetIds.includes(String(pet.id));
+  const shareMessage = shareStatus === "shared"
+    ? "Profile shared."
+    : shareStatus === "copied"
+      ? "Profile link copied."
+      : "Unable to share right now.";
+
+  async function handleShareProfile() {
+    const profileUrl = window.location.href;
+    const shareData = {
+      title: `${pet.name} on PetMatch`,
+      text: `Meet ${pet.name}, a ${pet.breed} in ${pet.location}.`,
+      url: profileUrl,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        setShareStatus("shared");
+      } else {
+        if (!navigator.clipboard?.writeText) {
+          throw new Error("Clipboard sharing is not available.");
+        }
+
+        await navigator.clipboard.writeText(profileUrl);
+        setShareStatus("copied");
+      }
+    } catch (err) {
+      if (err.name === "AbortError") {
+        return;
+      }
+
+      setShareStatus("failed");
+    } finally {
+      window.setTimeout(() => setShareStatus("idle"), 2200);
+    }
+  }
 
   return (
     <main className="petdetails">
@@ -62,8 +100,8 @@ export default function PetDetails({ dogs, loading, error, savedPetIds, onToggle
 
         <div className="petdetails__right">
           <div className="petdetails__actions">
-            <button className="petdetails__icon-btn">
-              <img src={callIcon} alt="call" />
+            <button className="petdetails__icon-btn" type="button" aria-label="Call shelter">
+              <img src={callIcon} alt="" />
             </button>
 
             <button
@@ -76,10 +114,21 @@ export default function PetDetails({ dogs, loading, error, savedPetIds, onToggle
               <img src={starIcon} alt="" />
             </button>
 
-            <button className="petdetails__icon-btn">
-              <img src={shareIcon} alt="share" />
+            <button
+              className={`petdetails__icon-btn ${shareStatus !== "idle" ? "petdetails__icon-btn--notice" : ""}`}
+              type="button"
+              aria-label={`Share ${pet.name}`}
+              onClick={handleShareProfile}
+            >
+              <img src={shareIcon} alt="" />
             </button>
           </div>
+
+          {shareStatus !== "idle" && (
+            <p className={`petdetails__share-feedback petdetails__share-feedback--${shareStatus}`} role="status">
+              {shareMessage}
+            </p>
+          )}
 
           <h3 className="petdetails__section-title">Health</h3>
           <p className="petdetails__text">Vaccinations up to date</p>
