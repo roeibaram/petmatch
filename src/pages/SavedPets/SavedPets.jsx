@@ -2,6 +2,9 @@ import PetGrid from "../../components/PetGrid/PetGrid";
 import "./SavedPets.css";
 
 export default function SavedPets({ pets, savedPetIds, onToggleSavedPet, onClearSavedPets }) {
+  const savedLocationCount = new Set(pets.map((pet) => pet.location)).size;
+  const savedBreedCount = new Set(pets.map((pet) => pet.breed)).size;
+
   function handleClearSavedPets() {
     const shouldClear = window.confirm("Remove all saved pets from your shortlist?");
 
@@ -33,6 +36,20 @@ export default function SavedPets({ pets, savedPetIds, onToggleSavedPet, onClear
             <p className="savedpets__summary">
               {pets.length} saved match{pets.length === 1 ? "" : "es"} ready to review.
             </p>
+            <ul className="savedpets__stats" aria-label="Saved pet shortlist summary">
+              <li>
+                <span>{pets.length}</span>
+                Saved
+              </li>
+              <li>
+                <span>{savedBreedCount}</span>
+                Breed{savedBreedCount === 1 ? "" : "s"}
+              </li>
+              <li>
+                <span>{savedLocationCount}</span>
+                Location{savedLocationCount === 1 ? "" : "s"}
+              </li>
+            </ul>
             <PetGrid
               pets={pets}
               savedPetIds={savedPetIds}

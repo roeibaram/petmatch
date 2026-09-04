@@ -39,6 +39,31 @@
   margin-bottom: 28px;
 }
 
+.savedpets__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+.savedpets__stats li {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px;
+}
+
+.savedpets__stats span {
+  display: block;
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
 .savedpets__clear {
   border: 2px solid #fff;
   border-radius: 999px;
@@ -72,5 +97,9 @@
   .savedpets__header {
     align-items: start;
     flex-direction: column;
+  }
+
+  .savedpets__stats {
+    grid-template-columns: 1fr;
   }
 }
