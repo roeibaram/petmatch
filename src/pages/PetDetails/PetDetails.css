@@ -69,6 +69,11 @@
   cursor: pointer;
 }
 
+.petdetails__icon-btn:focus {
+  outline: 3px solid rgba(108, 99, 255, 0.35);
+  outline-offset: 3px;
+}
+
 .petdetails__icon-btn img {
   width: 20px;
   height: 20px;
@@ -106,6 +111,17 @@
 .petdetails__text {
   font-size: 16px;
   margin-bottom: 14px;
+}
+
+.petdetails__contact-link {
+  color: #2f266f;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.petdetails__contact-link:hover {
+  color: #6c63ff;
 }
 
 .petdetails__list {

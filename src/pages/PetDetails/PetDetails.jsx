@@ -34,6 +34,8 @@ export default function PetDetails({ dogs, loading, error, savedPetIds, onToggle
     );
 
   const isSaved = savedPetIds.includes(String(pet.id));
+  const shelterPhone = "(718) 555-0192";
+  const shelterEmail = "contact@happytails.org";
   const shareMessage = shareStatus === "shared"
     ? "Profile shared."
     : shareStatus === "copied"
@@ -100,9 +102,9 @@ export default function PetDetails({ dogs, loading, error, savedPetIds, onToggle
 
         <div className="petdetails__right">
           <div className="petdetails__actions">
-            <button className="petdetails__icon-btn" type="button" aria-label="Call shelter">
+            <a className="petdetails__icon-btn" href="tel:+17185550192" aria-label="Call Happy Tails Rescue">
               <img src={callIcon} alt="" />
-            </button>
+            </a>
 
             <button
               className={`petdetails__icon-btn ${isSaved ? "petdetails__icon-btn--active" : ""}`}
@@ -139,8 +141,16 @@ export default function PetDetails({ dogs, loading, error, savedPetIds, onToggle
           <h3 className="petdetails__section-title">Shelter</h3>
           <p className="petdetails__text">Happy Tails Rescue</p>
           <p className="petdetails__text">{pet.location}</p>
-          <p className="petdetails__text">(718) 555-0192</p>
-          <p className="petdetails__text">contact@happytails.org</p>
+          <p className="petdetails__text">
+            <a className="petdetails__contact-link" href="tel:+17185550192">
+              {shelterPhone}
+            </a>
+          </p>
+          <p className="petdetails__text">
+            <a className="petdetails__contact-link" href={`mailto:${shelterEmail}?subject=PetMatch inquiry about ${pet.name}`}>
+              {shelterEmail}
+            </a>
+          </p>
           <p className="petdetails__text">Mon–Fri 11am–6pm</p>
         </div>
       </div>
