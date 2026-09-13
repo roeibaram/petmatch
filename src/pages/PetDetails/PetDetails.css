@@ -108,9 +108,60 @@
   margin: 20px 0 8px;
 }
 
+.petdetails__section-title--compact {
+  margin-top: 0;
+}
+
 .petdetails__text {
   font-size: 16px;
   margin-bottom: 14px;
+}
+
+.petdetails__quick-facts {
+  margin: 26px 0 28px;
+  padding: 18px;
+  border: 1px solid rgba(47, 38, 111, 0.14);
+  border-radius: 14px;
+  background: #faf7f1;
+}
+
+.petdetails__fact-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.petdetails__fact-label {
+  color: #6f665c;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.petdetails__fact-value {
+  max-width: 58%;
+  color: #111;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.petdetails__temperaments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.petdetails__temperament {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: #2f266f;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .petdetails__contact-link {

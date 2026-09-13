@@ -138,6 +138,28 @@ export default function PetDetails({ dogs, loading, error, savedPetIds, onToggle
           <h3 className="petdetails__section-title">Good With</h3>
           <p className="petdetails__text">Kids • Families • Other dogs</p>
 
+          <div className="petdetails__quick-facts">
+            <h3 className="petdetails__section-title petdetails__section-title--compact">Quick Facts</h3>
+
+            <div className="petdetails__fact-row">
+              <span className="petdetails__fact-label">Best fit</span>
+              <span className="petdetails__fact-value">{pet.bestFor}</span>
+            </div>
+
+            <div className="petdetails__fact-row">
+              <span className="petdetails__fact-label">Expected size</span>
+              <span className="petdetails__fact-value">{pet.size}</span>
+            </div>
+
+            <div className="petdetails__temperaments" aria-label={`${pet.name} temperament traits`}>
+              {pet.temperament.map((trait) => (
+                <span className="petdetails__temperament" key={trait}>
+                  {trait}
+                </span>
+              ))}
+            </div>
+          </div>
+
           <h3 className="petdetails__section-title">Shelter</h3>
           <p className="petdetails__text">Happy Tails Rescue</p>
           <p className="petdetails__text">{pet.location}</p>
