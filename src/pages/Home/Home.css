@@ -106,8 +106,26 @@
 }
 
 .home__no-results {
-  font-style: italic;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
   margin-top: 20px;
+}
+
+.home__no-results p {
+  margin: 0;
+  font-style: italic;
+}
+
+.home__clear-search {
+  padding: 10px 18px;
+  border: 1px solid #fff;
+  border-radius: 24px;
+  background: #fff;
+  color: #ff8a3d;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .home__view-more {

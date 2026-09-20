@@ -35,13 +35,18 @@ export default function Home({ dogs, loading, error, savedPetIds, onToggleSavedP
     ? `${filteredDogs.length} match${filteredDogs.length === 1 ? "" : "es"} for "${searchTerm}"`
     : `${filteredDogs.length} pets ready to meet you`;
 
+  function handleClearSearch() {
+    setSearchTerm("");
+    setVisibleCount(3);
+  }
+
   return (
     <>
       <main className="home">
         <div className="home__container">
           <h1 className="home__title">Find Your New Best Friend</h1>
 
-          <SearchBar onSearch={handleSearch} />
+          <SearchBar value={searchTerm} onSearch={handleSearch} />
 
           {loading && <Preloader />}
           {error && <p className="home__status">{error}</p>}
@@ -52,7 +57,12 @@ export default function Home({ dogs, loading, error, savedPetIds, onToggleSavedP
               <p className="home__results-summary">{resultSummary}</p>
 
               {filteredDogs.length === 0 ? (
-                <p className="home__no-results">No dogs found. Try searching by name, breed, or city.</p>
+                <div className="home__no-results">
+                  <p>No dogs found. Try searching by name, breed, or city.</p>
+                  <button className="home__clear-search" type="button" onClick={handleClearSearch}>
+                    Clear search
+                  </button>
+                </div>
               ) : (
                 <>
                   <PetGrid
