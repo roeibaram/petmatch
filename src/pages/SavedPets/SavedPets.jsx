@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PetGrid from "../../components/PetGrid/PetGrid";
 import "./SavedPets.css";
 
@@ -57,9 +58,12 @@ export default function SavedPets({ pets, savedPetIds, onToggleSavedPet, onClear
             />
           </>
         ) : (
-          <p className="savedpets__empty">
-            Save pets from the home page to build a shortlist here.
-          </p>
+          <div className="savedpets__empty">
+            <p>Save pets from the home page to build a shortlist here.</p>
+            <Link className="savedpets__browse" to="/">
+              Browse pets
+            </Link>
+          </div>
         )}
       </div>
     </main>
