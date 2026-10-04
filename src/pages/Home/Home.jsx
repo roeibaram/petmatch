@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import PetGrid from "../../components/PetGrid/PetGrid";
 import Preloader from "../../components/Preloader/Preloader";
@@ -16,13 +16,8 @@ function doesPetMatchSearch(dog, searchTerm) {
 
 export default function Home({ dogs, loading, error, savedPetIds, onToggleSavedPet }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredDogs, setFilteredDogs] = useState([]);
   const [visibleCount, setVisibleCount] = useState(3);
-
-  useEffect(() => {
-    const results = dogs.filter((dog) => doesPetMatchSearch(dog, searchTerm));
-    setFilteredDogs(results);
-  }, [searchTerm, dogs]);
+  const filteredDogs = dogs.filter((dog) => doesPetMatchSearch(dog, searchTerm));
 
   const handleSearch = (value) => {
     setSearchTerm(value.toLowerCase());
