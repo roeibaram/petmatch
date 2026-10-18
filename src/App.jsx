@@ -16,22 +16,33 @@ export default function App() {
   const [savedPetIds, setSavedPetIds] = useState(() => readSavedPetIds());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
     savePetIds(savedPetIds);
   }, [savedPetIds]);
 
   useEffect(() => {
+    let isCurrentRequest = true;
+    setLoading(true);
+    setError("");
+
     fetchDogs()
       .then((data) => {
+        if (!isCurrentRequest) return;
         setDogs(mapDogData(data));
         setLoading(false);
       })
       .catch(() => {
+        if (!isCurrentRequest) return;
         setError("Unable to load dogs. Try again later.");
         setLoading(false);
       });
-  }, []);
+
+    return () => {
+      isCurrentRequest = false;
+    };
+  }, [reloadKey]);
 
   const savedPets = useMemo(() => {
     return dogs.filter((dog) => savedPetIds.includes(String(dog.id)));
@@ -53,6 +64,10 @@ export default function App() {
     setSavedPetIds([]);
   }
 
+  function handleRetryLoad() {
+    setReloadKey((currentKey) => currentKey + 1);
+  }
+
   return (
     <>
       <Header savedPetCount={savedPetIds.length} />
@@ -65,6 +80,7 @@ export default function App() {
               dogs={dogs}
               loading={loading}
               error={error}
+              onRetry={handleRetryLoad}
               savedPetIds={savedPetIds}
               onToggleSavedPet={handleToggleSavedPet}
             />

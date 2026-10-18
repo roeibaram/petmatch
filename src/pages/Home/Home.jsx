@@ -14,7 +14,7 @@ function doesPetMatchSearch(dog, searchTerm) {
   );
 }
 
-export default function Home({ dogs, loading, error, savedPetIds, onToggleSavedPet }) {
+export default function Home({ dogs, loading, error, onRetry, savedPetIds, onToggleSavedPet }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(3);
   const filteredDogs = dogs.filter((dog) => doesPetMatchSearch(dog, searchTerm));
@@ -44,7 +44,14 @@ export default function Home({ dogs, loading, error, savedPetIds, onToggleSavedP
           <SearchBar value={searchTerm} onSearch={handleSearch} />
 
           {loading && <Preloader />}
-          {error && <p className="home__status">{error}</p>}
+          {error && (
+            <div className="home__status" role="alert">
+              <p>{error}</p>
+              <button className="home__retry" onClick={onRetry} type="button">
+                Try again
+              </button>
+            </div>
+          )}
 
           {!loading && !error && (
             <>
