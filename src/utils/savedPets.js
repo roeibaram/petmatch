@@ -1,4 +1,4 @@
-const SAVED_PETS_STORAGE_KEY = "petmatch_saved_pet_ids";
+export const SAVED_PETS_STORAGE_KEY = "petmatch_saved_pet_ids";
 
 export function readSavedPetIds() {
   try {

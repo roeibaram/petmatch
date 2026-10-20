@@ -7,7 +7,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import { fetchDogs } from "./utils/dogApi";
 import { mapDogData } from "./utils/dogMapper";
-import { readSavedPetIds, savePetIds } from "./utils/savedPets";
+import { readSavedPetIds, savePetIds, SAVED_PETS_STORAGE_KEY } from "./utils/savedPets";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
@@ -21,6 +21,25 @@ export default function App() {
   useEffect(() => {
     savePetIds(savedPetIds);
   }, [savedPetIds]);
+
+  useEffect(() => {
+    function syncSavedPets(event) {
+      if (event.key !== SAVED_PETS_STORAGE_KEY && event.key !== null) {
+        return;
+      }
+
+      const nextIds = readSavedPetIds();
+      setSavedPetIds((currentIds) => {
+        const isUnchanged = currentIds.length === nextIds.length
+          && currentIds.every((id, index) => id === nextIds[index]);
+
+        return isUnchanged ? currentIds : nextIds;
+      });
+    }
+
+    window.addEventListener("storage", syncSavedPets);
+    return () => window.removeEventListener("storage", syncSavedPets);
+  }, []);
 
   useEffect(() => {
     let isCurrentRequest = true;
