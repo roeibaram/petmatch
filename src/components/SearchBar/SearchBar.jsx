@@ -11,6 +11,7 @@ export default function SearchBar({ value, onSearch }) {
     <form className="search" onSubmit={handleSubmit}>
       <input
         className="search__input"
+        aria-label="Search pets by breed, name, or city"
         placeholder="Search breed, name, or city"
         value={value}
         onChange={(e) => onSearch(e.target.value)}
