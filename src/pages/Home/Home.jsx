@@ -17,17 +17,18 @@ function doesPetMatchSearch(dog, searchTerm) {
 export default function Home({ dogs, loading, error, onRetry, savedPetIds, onToggleSavedPet }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(3);
-  const filteredDogs = dogs.filter((dog) => doesPetMatchSearch(dog, searchTerm));
+  const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+  const filteredDogs = dogs.filter((dog) => doesPetMatchSearch(dog, normalizedSearchTerm));
 
   const handleSearch = (value) => {
-    setSearchTerm(value.toLowerCase());
+    setSearchTerm(value);
     setVisibleCount(3);
   };
 
   const visiblePets = filteredDogs.slice(0, visibleCount);
   const canViewMore = visibleCount < filteredDogs.length;
-  const resultSummary = searchTerm
-    ? `${filteredDogs.length} match${filteredDogs.length === 1 ? "" : "es"} for "${searchTerm}"`
+  const resultSummary = normalizedSearchTerm
+    ? `${filteredDogs.length} match${filteredDogs.length === 1 ? "" : "es"} for "${searchTerm.trim()}"`
     : `${filteredDogs.length} pets ready to meet you`;
 
   function handleClearSearch() {
