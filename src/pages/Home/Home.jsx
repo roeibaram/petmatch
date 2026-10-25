@@ -57,7 +57,7 @@ export default function Home({ dogs, loading, error, onRetry, savedPetIds, onTog
           {!loading && !error && (
             <>
               <h2 className="home__matches-title">Here Are Your Matches 🐾</h2>
-              <p className="home__results-summary">{resultSummary}</p>
+              <p className="home__results-summary" role="status">{resultSummary}</p>
 
               {filteredDogs.length === 0 ? (
                 <div className="home__no-results">
