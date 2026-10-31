@@ -15,7 +15,12 @@ export default function Header({ savedPetCount = 0 }) {
           <Link to="/saved-pets" className="header__btn header__btn--saved">
             <span>Saved Pets</span>
             {savedPetCount > 0 ? (
-              <span className="header__badge" aria-label={`${savedPetCount} saved pets`}>
+              <span
+                className="header__badge"
+                aria-label={`${savedPetCount} saved pets`}
+                aria-live="polite"
+                aria-atomic="true"
+              >
                 {savedPetCount}
               </span>
             ) : null}
