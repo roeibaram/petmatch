@@ -17,16 +17,29 @@ function doesPetMatchSearch(dog, searchTerm) {
 export default function Home({ dogs, loading, error, onRetry, savedPetIds, onToggleSavedPet }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(3);
+  const [sortMode, setSortMode] = useState("recommended");
   const normalizedSearchTerm = searchTerm.trim().toLowerCase();
   const filteredDogs = dogs.filter((dog) => doesPetMatchSearch(dog, normalizedSearchTerm));
+  const sortedDogs = [...filteredDogs].sort((firstDog, secondDog) => {
+    if (sortMode === "name") {
+      return firstDog.name.localeCompare(secondDog.name);
+    }
+
+    if (sortMode === "breed") {
+      return firstDog.breed.localeCompare(secondDog.breed)
+        || firstDog.name.localeCompare(secondDog.name);
+    }
+
+    return 0;
+  });
 
   const handleSearch = (value) => {
     setSearchTerm(value);
     setVisibleCount(3);
   };
 
-  const visiblePets = filteredDogs.slice(0, visibleCount);
-  const canViewMore = visibleCount < filteredDogs.length;
+  const visiblePets = sortedDogs.slice(0, visibleCount);
+  const canViewMore = visibleCount < sortedDogs.length;
   const resultSummary = normalizedSearchTerm
     ? `${filteredDogs.length} match${filteredDogs.length === 1 ? "" : "es"} for "${searchTerm.trim()}"`
     : `${filteredDogs.length} pets ready to meet you`;
@@ -57,9 +70,25 @@ export default function Home({ dogs, loading, error, onRetry, savedPetIds, onTog
           {!loading && !error && (
             <>
               <h2 className="home__matches-title">Here Are Your Matches 🐾</h2>
-              <p className="home__results-summary" role="status">{resultSummary}</p>
+              <div className="home__results-toolbar">
+                <p className="home__results-summary" role="status">{resultSummary}</p>
+                <label className="home__sort">
+                  <span>Sort by</span>
+                  <select
+                    onChange={(event) => {
+                      setSortMode(event.target.value);
+                      setVisibleCount(3);
+                    }}
+                    value={sortMode}
+                  >
+                    <option value="recommended">Recommended</option>
+                    <option value="name">Name (A-Z)</option>
+                    <option value="breed">Breed (A-Z)</option>
+                  </select>
+                </label>
+              </div>
 
-              {filteredDogs.length === 0 ? (
+              {sortedDogs.length === 0 ? (
                 <div className="home__no-results">
                   <p>No dogs found. Try searching by name, breed, or city.</p>
                   <button className="home__clear-search" type="button" onClick={handleClearSearch}>
@@ -77,7 +106,8 @@ export default function Home({ dogs, loading, error, onRetry, savedPetIds, onTog
                   {canViewMore && (
                     <button
                       className="home__view-more"
-                      onClick={() => setVisibleCount(visibleCount + 3)}
+                      onClick={() => setVisibleCount((count) => count + 3)}
+                      type="button"
                     >
                       View More
                     </button>
