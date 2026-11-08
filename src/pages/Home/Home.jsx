@@ -72,6 +72,9 @@ export default function Home({ dogs, loading, error, onRetry, savedPetIds, onTog
               <h2 className="home__matches-title">Here Are Your Matches 🐾</h2>
               <div className="home__results-toolbar">
                 <p className="home__results-summary" role="status">{resultSummary}</p>
+                <p className="home__visible-count">
+                  Showing {visiblePets.length} of {sortedDogs.length}
+                </p>
                 <label className="home__sort">
                   <span>Sort by</span>
                   <select
@@ -110,6 +113,15 @@ export default function Home({ dogs, loading, error, onRetry, savedPetIds, onTog
                       type="button"
                     >
                       View More
+                    </button>
+                  )}
+                  {visibleCount > 3 && (
+                    <button
+                      className="home__view-less"
+                      onClick={() => setVisibleCount(3)}
+                      type="button"
+                    >
+                      Show fewer
                     </button>
                   )}
                 </>
