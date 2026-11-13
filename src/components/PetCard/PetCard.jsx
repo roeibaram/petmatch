@@ -16,7 +16,13 @@ export default function PetCard({ pet, isSaved = false, onToggleSaved }) {
       </button>
 
       <Link to={`/pets/${pet.id}`} className="pet-card__link">
-        <img src={pet.img} alt={pet.name} className="pet-card__img" />
+        <img
+          src={pet.img}
+          alt={pet.name}
+          className="pet-card__img"
+          loading="lazy"
+          decoding="async"
+        />
         <h3 className="pet-card__name">{pet.name}</h3>
         <p className="pet-card__info">{pet.breed}</p>
         <p className="pet-card__location">{pet.location}</p>
